@@ -45,6 +45,7 @@ gem 'block_helpers'
 group :development, :test do
   gem 'ruby-debug'
   gem 'ruby-debug-base'
+  gem 'ruby-debug-ide'
   gem 'rspec', '<2.0.0'  
   gem 'rspec-rails', '<2.0.0' # rspec-rails 2.0.0 requires Rails 3.
   gem 'mocha'
