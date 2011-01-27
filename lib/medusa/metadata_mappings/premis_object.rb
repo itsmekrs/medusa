@@ -1,0 +1,37 @@
+module Medusa
+  class PremisObject < ActiveFedora::NokogiriDatastream
+
+    set_terminology do |t|
+      t.root(:path => "object", :xmlns => "http://www.loc.gov/standards/premis/v1",
+          :schema => "http://www.loc.gov/standards/premis/v1 http://www.loc.gov/standards/premis/v1/Object-v1-1.xsd")
+      t.object_identifier(:path => "objectIdentifier") {
+        t.object_identifier_type(:path => "objectIdentifierType")
+        t.object_identifier_value(:path => "objectIdentifierValue")
+      }
+      t.object_category(:path => "objectCategory")
+      t.object_characteristics(:path => "objectCharacteristics") {
+        t.fixity {
+          t.message_digest_algorithm(:path => "messageDigestAlgorithm")
+          t.message_digest(:path => "messageDigest")
+        }
+        t.size
+        t.format {
+          t.format_designation(:path => "formatDesignation") {
+            t.format_name(:path => "formatName")
+            t.format_version(:path => "formatVersion")
+          }
+        }
+      }
+    end
+
+    # Generates an empty PREMIS Object (used when you call PremisObject.new without passing in existing xml)
+    def self.xml_template
+      builder = Nokogiri::XML::Builder.new do |xml|
+        xml.premisObject("xmlns" => "http://www.loc.gov/standards/premis/v1",
+            "xsi:schemaLocation" => "http://www.loc.gov/standards/premis/v1 http://www.loc.gov/standards/premis/v1/Object-v1-1.xsd")
+      end
+      return builder.doc
+    end
+
+  end
+end
