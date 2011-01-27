@@ -29,6 +29,17 @@ module Medusa
         t.digital_origin(:path => 'digitalOrigin')
         t.internet_media_type(:path => 'internetMediaType')
       end
+      t.subject do
+        t.authority(:path => {:attribute => 'authority'})
+        t.topic
+      end
+      t.record_info(:path => 'recordInfo') do
+        t.language_of_cataloging(:path => 'languageOfCataloging') do
+          t.language_term(:path => 'languageTerm') do
+            t.authority(:path => {:attribute => 'authority'})
+          end
+        end
+      end
     end
 
     def self.xml_template
@@ -54,6 +65,14 @@ module Medusa
           xml.physicalDescription do
             xml.digitalOrigin('born digital')
             xml.internetMediaType
+          end
+          xml.subject(:authority => '') do
+            xml.topic
+          end
+          xml.recordInfo do
+            xml.languageOfCataloging do
+              xml.languageTerm('eng', :authority => 'iso639-2b')
+            end
           end
         end
       end

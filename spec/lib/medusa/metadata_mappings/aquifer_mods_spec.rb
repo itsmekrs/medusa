@@ -48,6 +48,15 @@ describe Medusa::AquiferMods do
       @am_xml.css('mods > physicalDescription > digitalOrigin').should_not be_empty
       @am_xml.css('mods > physicalDescription > internetMediaType').should_not be_empty
     end
+
+    it "should have a subject element with some attributes and sub elements" do
+      @am_xml.css('mods > subject[authority]').should_not be_empty
+      @am_xml.css('mods > subject > topic').should_not be_empty
+    end
+
+    it "should have a recordInfo element with languageOfCataloging -> languageTerm subelement with authority code" do
+      @am_xml.css('mods > recordInfo > languageOfCataloging > languageTerm[authority]').should_not be_empty
+    end
   end
 
   def check_mapping(path, new_value = nil)
@@ -101,5 +110,14 @@ describe Medusa::AquiferMods do
       check_mapping([:physical_description, :internet_media_type])
     end
 
+    it "should map subject with some attributes and sub-elements" do
+      check_mapping([:subject, :topic])
+      check_mapping([:subject, :authority])
+    end
+
+    it "should map recordInfo with subelements" do
+      check_update([:record_info, :language_of_cataloging, :language_term], 'eng')
+      check_update([:record_info, :language_of_cataloging, :language_term, :authority], 'iso639-2b')
+    end
   end
 end
