@@ -25,6 +25,10 @@ module Medusa
           t.authority(:path => {:attribute => 'authority'})
         end
       end
+      t.physical_description(:path => 'physicalDescription') do
+        t.digital_origin(:path => 'digitalOrigin')
+        t.internet_media_type(:path => 'internetMediaType')
+      end
     end
 
     def self.xml_template
@@ -46,6 +50,10 @@ module Medusa
           xml.typeOfResource
           xml.language do
             xml.languageTerm(:type => 'code', :authority => 'iso639-2b')
+          end
+          xml.physicalDescription do
+            xml.digitalOrigin('born digital')
+            xml.internetMediaType
           end
         end
       end

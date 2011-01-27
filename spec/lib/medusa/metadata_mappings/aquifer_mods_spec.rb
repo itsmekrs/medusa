@@ -43,6 +43,11 @@ describe Medusa::AquiferMods do
       @am_xml.css('mods > language > languageTerm[type]').should_not be_empty
       @am_xml.css('mods > language > languageTerm[authority]').should_not be_empty
     end
+
+    it "should have a physicalDescription element with digitalOrigin and internetMediaType subelements" do
+      @am_xml.css('mods > physicalDescription > digitalOrigin').should_not be_empty
+      @am_xml.css('mods > physicalDescription > internetMediaType').should_not be_empty
+    end
   end
 
   def check_mapping(path, new_value = nil)
@@ -90,5 +95,11 @@ describe Medusa::AquiferMods do
       check_mapping([:language, :language_term])
       check_update([:language, :language_term, :type], 'text')
     end
+
+    it "should map physicalDescription with digitalOrigin and internetMediaType" do
+      check_update([:physical_description, :digital_origin], 'digitized other analog')
+      check_mapping([:physical_description, :internet_media_type])
+    end
+
   end
 end
