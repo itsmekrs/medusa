@@ -28,3 +28,5 @@ db/schema.rb
 
 /.bundle
 .idea/
+/.yardoc
+/doc
