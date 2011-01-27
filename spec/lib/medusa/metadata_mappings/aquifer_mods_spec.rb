@@ -35,12 +35,25 @@ describe Medusa::AquiferMods do
       @am_xml.css('mods > accessCondition').should_not be_empty
     end
 
+    it "should have a typeOfResource" do
+      @am_xml.css('mods > typeOfResource').should_not be_empty
+    end
+
+    it "should have a language with languageTerm and attributes" do
+      @am_xml.css('mods > language > languageTerm[type]').should_not be_empty
+      @am_xml.css('mods > language > languageTerm[authority]').should_not be_empty
+    end
   end
 
-  def check_mapping(path)
-      @am.get_values(path).should == ['']
-      @am.update_values(path => 'Some text')
-      @am.get_values(path).first.should == 'Some text'
+  def check_mapping(path, new_value = nil)
+    @am.get_values(path).should == ['']
+    check_update(path, new_value)
+  end
+
+  def check_update(path, new_value = nil)
+    new_value ||= 'Some text'
+    @am.update_values(path => new_value)
+    @am.get_values(path).first.should == new_value
   end
 
   describe "terminology mapping" do
@@ -49,7 +62,7 @@ describe Medusa::AquiferMods do
     end
 
     it "should map name" do
-      check_mapping([:name, :name_part])  
+      check_mapping([:name, :name_part])
     end
 
     it "should map title" do
@@ -62,12 +75,20 @@ describe Medusa::AquiferMods do
 
     it "should map origin info" do
       check_mapping([:origin_info, :copyright_date])
-      @am.update_values([:origin_info, :copyright_date, :key_date] => 'no')
-      @am.get_values([:origin_info, :copyright_date, :key_date]).first.should == 'no'
+      check_update([:origin_info, :copyright_date, :key_date])
     end
 
     it "should map access condition" do
       check_mapping([:access_condition])
+    end
+
+    it "should map type of resource" do
+      check_mapping([:type_of_resource])
+    end
+
+    it "should map language, language_term, and attributes" do
+      check_mapping([:language, :language_term])
+      check_update([:language, :language_term, :type], 'text')
     end
   end
 end

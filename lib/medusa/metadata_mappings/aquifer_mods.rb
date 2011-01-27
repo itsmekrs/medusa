@@ -18,6 +18,13 @@ module Medusa
         t.url
       end
       t.access_condition(:path => 'accessCondition')
+      t.type_of_resource(:path => 'typeOfResource')
+      t.language do
+        t.language_term(:path => 'languageTerm') do
+          t.type_(:path => {:attribute => 'type'})
+          t.authority(:path => {:attribute => 'authority'})
+        end
+      end
     end
 
     def self.xml_template
@@ -36,6 +43,10 @@ module Medusa
             xml.url
           end
           xml.accessCondition
+          xml.typeOfResource
+          xml.language do
+            xml.languageTerm(:type => 'code', :authority => 'iso639-2b')
+          end
         end
       end
       builder.doc
