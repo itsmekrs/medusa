@@ -86,6 +86,8 @@ GEM
       ruby-debug-base (~> 0.10.4.0)
     ruby-debug-base (0.10.4)
       linecache (>= 0.3)
+    ruby-debug-ide (0.4.16)
+      rake (>= 0.8.1)
     solr-ruby (0.0.8)
     solrizer (0.3.2)
       mediashelf-loggable
@@ -144,6 +146,7 @@ DEPENDENCIES
   rspec-rails (< 2.0.0)
   ruby-debug
   ruby-debug-base
+  ruby-debug-ide
   solr-ruby
   solrizer (>= 0.3.1)
   solrizer-fedora (>= 0.1.1)
