@@ -1,5 +1,8 @@
+require 'lib/medusa/metadata_mappings/xsd_validate'
 module Medusa
   class AquiferMods < ActiveFedora::NokogiriDatastream
+    include Medusa::XsdValidatingNokogiriDatastream
+
     set_terminology do |t|
       t.root(:path => "mods", :xmlns=>"http://www.loc.gov/mods/v3",
           :schema=>"http://www.loc.gov/standards/mods/v3/mods-3-4.xsd")
@@ -79,20 +82,9 @@ module Medusa
       builder.doc
     end
 
-    def self.xsd_schema
+    def self.xsd_schema_string
       File.new(File.join(File.dirname(__FILE__), 'schemas', 'mods-3-4.xsd')).read
     end
 
-    def self.schema
-      Nokogiri::XML::Schema.new(self.xsd_schema)
-    end
-
-    def valid?
-      self.class.schema.valid?(self.ng_xml)
-    end
-
-    def validate
-      self.class.schema.validate(self.ng_xml)
-    end
   end
 end

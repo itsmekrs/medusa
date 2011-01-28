@@ -1,5 +1,8 @@
+require 'lib/medusa/metadata_mappings/xsd_validate'
+
 module Medusa
   class PremisObject < ActiveFedora::NokogiriDatastream
+    include Medusa::XsdValidatingNokogiriDatastream
 
     set_terminology do |t|
       t.root(:path => "object", :xmlns => "http://www.loc.gov/standards/premis/v1",
@@ -31,6 +34,10 @@ module Medusa
             "xsi:schemaLocation" => "http://www.loc.gov/standards/premis/v1 http://www.loc.gov/standards/premis/v1/Object-v1-1.xsd")
       end
       return builder.doc
+    end
+
+    def self.xsd_schema_string
+      File.new(File.join(File.dirname(__FILE__), 'schemas', 'Object-v1-1.xsd')).read
     end
 
   end
