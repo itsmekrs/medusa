@@ -6,7 +6,11 @@ module Medusa
 
     set_terminology do |t|
       t.root(:path => "object", :xmlns => "http://www.loc.gov/standards/premis/v1",
-          :schema => "http://www.loc.gov/standards/premis/v1 http://www.loc.gov/standards/premis/v1/Object-v1-1.xsd")
+          :schema => "http://www.loc.gov/standards/premis/v1 http://www.loc.gov/standards/premis/v1/Object-v1-1.xsd",
+          :xmlns:xsi => "http://www.w3.org/2001/XMLSchema-instance",
+          :version => "2.1") {
+        t.type(:path => {:attribute => "xsi:type"})
+      }
       t.object_identifier(:path => "objectIdentifier") {
         t.object_identifier_type(:path => "objectIdentifierType")
         t.object_identifier_value(:path => "objectIdentifierValue")
@@ -42,3 +46,4 @@ module Medusa
 
   end
 end
+
