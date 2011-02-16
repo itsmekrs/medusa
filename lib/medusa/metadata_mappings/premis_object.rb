@@ -7,7 +7,7 @@ module Medusa
     set_terminology do |t|
       t.root(:path => "object", :xmlns => "http://www.loc.gov/standards/premis/v1",
           :schema => "http://www.loc.gov/standards/premis/v1 http://www.loc.gov/standards/premis/v1/Object-v1-1.xsd",
-          :xmlns:xsi => "http://www.w3.org/2001/XMLSchema-instance",
+          "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
           :version => "2.1") {
         t.type(:path => {:attribute => "xsi:type"})
       }
@@ -34,8 +34,29 @@ module Medusa
     # Generates an empty PREMIS Object (used when you call PremisObject.new without passing in existing xml)
     def self.xml_template
       builder = Nokogiri::XML::Builder.new do |xml|
-        xml.premisObject("xmlns" => "http://www.loc.gov/standards/premis/v1",
-            "xsi:schemaLocation" => "http://www.loc.gov/standards/premis/v1 http://www.loc.gov/standards/premis/v1/Object-v1-1.xsd")
+        xml.premisObject("xmlns" => "http://www.loc.gov/standards/premis/v1", 
+          "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
+          "xsi:schemaLocation" => "http://www.loc.gov/standards/premis/v1 http://www.loc.gov/standards/premis/v1/Object-v1-1.xsd",
+          :version => "2.1")
+        xml.type
+        xml.object_identifier {
+          xml.object_identifier_type
+          xml.object_identifier_value
+        }
+        xml.object_category
+        xml.object_characteristics {
+          xml.fixity {
+            xml.message_digest_algorithm
+            xml.message_digest
+          }
+          xml.size
+          xml.format {
+            xml.format_designation {
+              xml.format_name
+              xml.format_version
+            }
+          }
+        }
       end
       return builder.doc
     end

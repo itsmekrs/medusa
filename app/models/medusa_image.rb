@@ -9,6 +9,11 @@ class MedusaImage < ActiveFedora::Base
 
   has_metadata :name => "descMetadata", :type => Hydra::ModsImage
 
+  # Uses the Medusa PREMIS Object Schema for recording techMD
+  has_metadata :name => "technicalMetadata", :type => Medusa::PremisObject
+
+  #has_metadata :name => "provenanceMetadata", :type => Medusa::PremisEvent
+
   # A place to put extra metadata values
   has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
     m.field 'collection', :string
