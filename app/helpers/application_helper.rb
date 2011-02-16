@@ -8,7 +8,7 @@ module ApplicationHelper
 
   # Change the name of your application here
   def application_name
-    'Hydrangea'
+    'Medusa'
   end
   
 end

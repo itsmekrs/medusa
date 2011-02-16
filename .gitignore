@@ -31,3 +31,7 @@ db/development_structure.sql
 .idea/
 /.yardoc
 /doc
+
+# UIUC only
+jetty/*
+nbproject/*
