@@ -6,10 +6,10 @@ module Medusa
 
     set_terminology do |t|
       t.root(:path => "object", :xmlns => "http://www.loc.gov/standards/premis/v1",
-          :schema => "http://www.loc.gov/standards/premis/v1 http://www.loc.gov/standards/premis/v1/Object-v1-1.xsd",
-          "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
-          :version => "2.1") {
-        t.type(:path => {:attribute => "xsi:type"})
+             :schema => "http://www.loc.gov/standards/premis/v1 http://www.loc.gov/standards/premis/v1/Object-v1-1.xsd",
+             "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
+             :version => "2.1") {
+        t._type(:path => {:attribute => "xsi:type"})
       }
       t.object_identifier(:path => "objectIdentifier") {
         t.object_identifier_type(:path => "objectIdentifierType")
@@ -22,7 +22,7 @@ module Medusa
           t.message_digest(:path => "messageDigest")
         }
         t.size
-        t.format {
+        t._format {
           t.format_designation(:path => "formatDesignation") {
             t.format_name(:path => "formatName")
             t.format_version(:path => "formatVersion")
@@ -34,11 +34,12 @@ module Medusa
     # Generates an empty PREMIS Object (used when you call PremisObject.new without passing in existing xml)
     def self.xml_template
       builder = Nokogiri::XML::Builder.new do |xml|
-        xml.premisObject("xmlns" => "http://www.loc.gov/standards/premis/v1", 
-          "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
-          "xsi:schemaLocation" => "http://www.loc.gov/standards/premis/v1 http://www.loc.gov/standards/premis/v1/Object-v1-1.xsd",
-          :version => "2.1")
-        xml.type
+        xml.premisObject("xmlns" => "http://www.loc.gov/standards/premis/v1",
+                         "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
+                         "xsi:schemaLocation" => "http://www.loc.gov/standards/premis/v1 http://www.loc.gov/standards/premis/v1/Object-v1-1.xsd",
+                         :version => "2.1") {
+          xml.type
+        }
         xml.object_identifier {
           xml.object_identifier_type
           xml.object_identifier_value
@@ -50,7 +51,7 @@ module Medusa
             xml.message_digest
           }
           xml.size
-          xml.format {
+          xml._format {
             xml.format_designation {
               xml.format_name
               xml.format_version
