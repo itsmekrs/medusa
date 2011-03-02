@@ -1,6 +1,6 @@
 require 'hydra'
 
-class MedusaImage < ActiveFedora::Base
+class PreservationImage < ActiveFedora::Base
   include Hydra::GenericImage
   include Hydra::ModelMethods
 

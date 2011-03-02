@@ -8,9 +8,8 @@ module Medusa
       t.root(:path => "object", :xmlns => "http://www.loc.gov/standards/premis/v1",
              :schema => "http://www.loc.gov/standards/premis/v1 http://www.loc.gov/standards/premis/v1/Object-v1-1.xsd",
              "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
-             :version => "2.1") {
-        t._type(:path => {:attribute => "xsi:type"})
-      }
+             :version => "2.1")
+      #t._type(:path => "root", :attributes => "xsi:type")
       t.object_identifier(:path => "objectIdentifier") {
         t.object_identifier_type(:path => "objectIdentifierType")
         t.object_identifier_value(:path => "objectIdentifierValue")
@@ -38,23 +37,22 @@ module Medusa
                          "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
                          "xsi:schemaLocation" => "http://www.loc.gov/standards/premis/v1 http://www.loc.gov/standards/premis/v1/Object-v1-1.xsd",
                          :version => "2.1") {
-          xml.type
-        }
-        xml.object_identifier {
-          xml.object_identifier_type
-          xml.object_identifier_value
-        }
-        xml.object_category
-        xml.object_characteristics {
-          xml.fixity {
-            xml.message_digest_algorithm
-            xml.message_digest
+          xml.object_identifier {
+            xml.object_identifier_type
+            xml.object_identifier_value
           }
-          xml.size
-          xml._format {
-            xml.format_designation {
-              xml.format_name
-              xml.format_version
+          xml.object_category
+          xml.object_characteristics {
+            xml.fixity {
+              xml.message_digest_algorithm
+              xml.message_digest
+            }
+            xml.size
+            xml._format {
+              xml.format_designation {
+                xml.format_name
+                xml.format_version
+              }
             }
           }
         }
