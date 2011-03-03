@@ -1,4 +1,5 @@
 require 'hydra'
+require 'medusa'
 
 class PreservationImage < ActiveFedora::Base
   include Hydra::GenericImage
@@ -9,7 +10,7 @@ class PreservationImage < ActiveFedora::Base
 
   has_metadata :name => "descMetadata", :type => Hydra::ModsImage
 
-  # Uses the Medusa PREMIS Object Schema for recording techMD
+  # Uses the Medusa PREMIS Object Schema for recording basic techMD
   has_metadata :name => "technicalMetadata", :type => Medusa::PremisObject
 
   #has_metadata :name => "provenanceMetadata", :type => Medusa::PremisEvent

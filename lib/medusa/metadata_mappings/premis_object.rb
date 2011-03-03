@@ -1,14 +1,13 @@
-require 'lib/medusa/metadata_mappings/xsd_validate'
+#require 'lib/medusa/metadata_mappings/xsd_validate'
 
 module Medusa
   class PremisObject < ActiveFedora::NokogiriDatastream
-    include Medusa::XsdValidatingNokogiriDatastream
+    #include Medusa::XsdValidatingNokogiriDatastream
 
     set_terminology do |t|
       t.root(:path => "object", :xmlns => "http://www.loc.gov/standards/premis/v1",
              :schema => "http://www.loc.gov/standards/premis/v1 http://www.loc.gov/standards/premis/v1/Object-v1-1.xsd",
-             "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
-             :version => "2.1")
+             "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance")
       #t._type(:path => "root", :attributes => "xsi:type")
       t.object_identifier(:path => "objectIdentifier") {
         t.object_identifier_type(:path => "objectIdentifierType")
@@ -37,21 +36,21 @@ module Medusa
                          "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
                          "xsi:schemaLocation" => "http://www.loc.gov/standards/premis/v1 http://www.loc.gov/standards/premis/v1/Object-v1-1.xsd",
                          :version => "2.1") {
-          xml.object_identifier {
-            xml.object_identifier_type
-            xml.object_identifier_value
+          xml.objectIdentifier {
+            xml.objectIdentifierType
+            xml.objectIdentifierValue
           }
-          xml.object_category
-          xml.object_characteristics {
+          xml.objectCategory
+          xml.objectCharacteristics {
             xml.fixity {
-              xml.message_digest_algorithm
-              xml.message_digest
+              xml.messageDigestAlgorithm
+              xml.messageDigest
             }
             xml.size
-            xml._format {
-              xml.format_designation {
-                xml.format_name
-                xml.format_version
+            xml.format {
+              xml.formatDesignation {
+                xml.formatName
+                xml.formatVersion
               }
             }
           }
