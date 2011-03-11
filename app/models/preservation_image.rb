@@ -13,7 +13,8 @@ class PreservationImage < ActiveFedora::Base
   # Uses the Medusa PREMIS Object Schema for recording basic techMD
   has_metadata :name => "technicalMetadata", :type => Medusa::PremisObject
 
-  #has_metadata :name => "provenanceMetadata", :type => Medusa::PremisEvent
+  # Uses the Medusa PREMIS Event Schema for recording basic provenanceMD
+  has_metadata :name => "provenanceMetadata", :type => Medusa::PremisEvent
 
   # A place to put extra metadata values
   has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
