@@ -15,7 +15,7 @@ module Medusa
     # Generates an empty PREMIS Event (used when you call PremisEvent.new without passing in existing xml)
     def self.xml_template
       builder = Nokogiri::XML::Builder.new do |xml|
-        xml.premisObject("xmlns" => "http://www.loc.gov/standards/premis/v1",
+        xml.premisEvent("xmlns" => "http://www.loc.gov/standards/premis/v1",
                          "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
                          "xsi:schemaLocation" => "http://www.loc.gov/standards/premis/v1 http://www.loc.gov/standards/premis/v1/Event-v1-1.xsd",
                          :version => "2.1") {

@@ -2,7 +2,6 @@ require 'hydra'
 require 'medusa'
 
 class PreservationImage < ActiveFedora::Base
-  include Hydra::GenericImage
   include Hydra::ModelMethods
 
   # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
@@ -10,11 +9,9 @@ class PreservationImage < ActiveFedora::Base
 
   has_metadata :name => "descMetadata", :type => Hydra::ModsImage
 
-  # Uses the Medusa PREMIS Object Schema for recording basic techMD
-  has_metadata :name => "technicalMetadata", :type => Medusa::PremisObject
+  has_metadata :name => "sourceMetadata", :type => Medusa::ContentdmRecord
 
-  # Uses the Medusa PREMIS Event Schema for recording basic provenanceMD
-  has_metadata :name => "provenanceMetadata", :type => Medusa::PremisEvent
+  has_metadata :name => "sourceMetadata", :type => Medusa::VoyagerMods
 
   # A place to put extra metadata values
   has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
