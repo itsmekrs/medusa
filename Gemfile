@@ -44,9 +44,9 @@ gem 'yard'
 source 'http://gemcutter.org'
 
 gem 'block_helpers'
+gem 'ruby-debug'
 
 group :development, :test do
-  gem 'ruby-debug'
   gem 'ruby-debug-base'
   gem 'ruby-debug-ide'
   gem 'rspec', '<2.0.0'
