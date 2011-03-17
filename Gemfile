@@ -45,8 +45,7 @@ source 'http://gemcutter.org'
 
 gem 'block_helpers'
 
-
-#group :development, :test do
+group :development, :test do
   gem 'ruby-debug'    
   gem 'ruby-debug-base'
   gem 'ruby-debug-ide'
@@ -56,4 +55,4 @@ gem 'block_helpers'
   gem 'cucumber', '>=0.8.5'
   gem 'cucumber-rails'
   gem 'gherkin'
-#end
+end
