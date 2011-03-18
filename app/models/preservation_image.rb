@@ -1,5 +1,7 @@
 require 'hydra'
 require 'medusa'
+require 'medusa/metadata_mappings/contentdm_record'
+require 'medusa/metadata_mappings/voyager_mods'
 
 class PreservationImage < ActiveFedora::Base
   include Hydra::ModelMethods
