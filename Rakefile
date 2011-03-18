@@ -16,7 +16,7 @@ task :set_test do
 end
 
 desc "Run the hydrangea rspec examples"
-  task :spec => ["set_test", "db:test:clone_structure", "hydra:default_fixtures:refresh", "spec_without_db"] do
+  task :spec => ["set_test", "db:test:clone_structure", "spec_without_db"] do
 end
 
 desc "Run the rspec examples without re-creating the test database first"
@@ -28,4 +28,6 @@ end
 
 desc "Run all hydrangea tests"
   task :alltests => ["set_test", "db:test:clone_structure", "hydra:default_fixtures:refresh", "spec_without_db", "cucumber"] do
+end
+  task :alltests => ["set_test", "db:test:clone_structure", "spec_without_db", "cucumber"] do
 end

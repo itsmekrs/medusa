@@ -8,14 +8,24 @@ GEM
     actionpack (2.3.11)
       activesupport (= 2.3.11)
       rack (~> 1.1.0)
-    active-fedora (1.2.7)
+    active-fedora (2.0.0)
       activeresource (< 3.0.0)
+      activeresource (< 3.0.0)
+      equivalent-xml
+      mediashelf-loggable
+      mime-types (>= 1.16)
       mime-types (>= 1.16)
       multipart-post
+      multipart-post
+      nokogiri
       nokogiri
       om (>= 1.0)
+      om (>= 1.0)
+      solr-ruby (>= 0.0.6)
       solr-ruby (>= 0.0.6)
       solrizer (>= 0.3.0)
+      solrizer (>= 1.0.0, < 2.0.0)
+      xml-simple (>= 1.0.12)
       xml-simple (>= 1.0.12)
     activerecord (2.3.11)
       activesupport (= 2.3.11)
@@ -51,6 +61,8 @@ GEM
     curb (0.7.14)
     database_cleaner (0.6.6)
     diff-lcs (1.1.2)
+    equivalent-xml (0.1.6)
+      nokogiri
     facets (2.8.4)
     gherkin (2.3.4)
       json (~> 1.4.6)
@@ -107,6 +119,7 @@ GEM
       linecache (>= 0.3)
     ruby-debug-ide (0.4.16)
       rake (>= 0.8.1)
+    ruby-net-ldap (0.0.4)
     solr-ruby (0.0.8)
     solrizer (1.0.1)
       mediashelf-loggable
@@ -117,9 +130,10 @@ GEM
       om
       om (>= 1.0.0)
       xml-simple
-    solrizer-fedora (1.0.0)
-      active-fedora (= 1.2.7)
-      solrizer (>= 0.3.0)
+    solrizer-fedora (1.0.1)
+      active-fedora (>= 2.0.0)
+      rsolr
+      solrizer (>= 1.0.0)
     sqlite3-ruby (1.2.5)
     term-ansicolor (1.0.5)
     trollop (1.16.2)
@@ -136,7 +150,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth (= 4.2.2)
-  active-fedora (= 1.2.7)
+  active-fedora (= 2.0.0)
   authlogic (>= 0.1.0)
   block_helpers
   builder
@@ -173,9 +187,10 @@ DEPENDENCIES
   ruby-debug
   ruby-debug-base
   ruby-debug-ide
+  ruby-net-ldap
   solr-ruby
-  solrizer (>= 0.3.1)
-  solrizer-fedora (>= 0.1.1)
+  solrizer (>= 1.0.1)
+  solrizer-fedora (>= 1.0.1)
   sqlite3-ruby (= 1.2.5)
   term-ansicolor
   trollop
