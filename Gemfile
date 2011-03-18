@@ -47,7 +47,7 @@ gem 'block_helpers'
 
 gem 'ruby-debug'
   
-group :development, :test do
+#group :development, :test do
   gem 'ruby-debug-base'
   gem 'ruby-debug-ide'
   gem 'rspec', '<2.0.0'
@@ -56,4 +56,4 @@ group :development, :test do
   gem 'cucumber', '>=0.8.5'
   gem 'cucumber-rails'
   gem 'gherkin'
-end
+#end
