@@ -117,7 +117,7 @@ namespace :hydra do
     end
   end
 
-end
+endj
 
 before 'deploy:update_code', 'hydra:jetty:stop'
 after 'deploy', 'hydra:jetty:load_and_start'
