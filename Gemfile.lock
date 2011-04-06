@@ -23,8 +23,8 @@ GEM
       om (>= 1.0)
       solr-ruby (>= 0.0.6)
       solr-ruby (>= 0.0.6)
-      solrizer (>= 0.3.0)
       solrizer (>= 1.0.0, < 2.0.0)
+      solrizer (>= 0.3.0)
       xml-simple (>= 1.0.12)
       xml-simple (>= 1.0.12)
     activerecord (2.3.11)
@@ -40,8 +40,8 @@ GEM
     capistrano (2.5.20)
       highline
       highline
-      net-scp (>= 1.0.0)
       net-scp
+      net-scp (>= 1.0.0)
       net-sftp
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
