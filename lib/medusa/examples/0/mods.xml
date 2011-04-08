@@ -1,0 +1,98 @@
+﻿<mods:mods version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/mods.xsd" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <mods:typeOfResource>cartographic</mods:typeOfResource>
+  <mods:titleInfo>
+    <mods:title>Carte de l'Afrique.</mods:title>
+  </mods:titleInfo>
+  <mods:name>
+    <mods:displayForm>Bellin, Jacques Nicolas</mods:displayForm>
+    <mods:role>
+      <mods:roleTerm authority="marcrelator" type="text">Creator</mods:roleTerm>
+      <mods:roleTerm authority="marcrelator" type="code">cre</mods:roleTerm>
+    </mods:role>
+  </mods:name>
+  <mods:originInfo>
+    <mods:place>
+      <mods:placeTerm>France</mods:placeTerm>
+    </mods:place>
+    <mods:dateCreated>1764</mods:dateCreated>
+  </mods:originInfo>
+  <mods:subject>
+    <mods:geographic>Africa (Continent)</mods:geographic>
+  </mods:subject>
+  <mods:subject authority="lcsh">
+    <mods:topic>Physical geography--Africa</mods:topic>
+  </mods:subject>
+  <mods:subject authority="lcsh">
+    <mods:topic>Africa--Civilization</mods:topic>
+  </mods:subject>
+  <mods:subject authority="lcsh">
+    <mods:topic>Early works to 1800</mods:topic>
+  </mods:subject>
+  <mods:subject>
+    <mods:topic>Indigenous peoples</mods:topic>
+  </mods:subject>
+  <mods:subject>
+    <mods:topic>Geographic regions</mods:topic>
+  </mods:subject>
+  <mods:subject>
+    <mods:topic>Rivers</mods:topic>
+  </mods:subject>
+  <mods:subject>
+    <mods:cartographics>
+      <mods:scale>1:55,000,000.</mods:scale>
+    </mods:cartographics>
+  </mods:subject>
+  <mods:genre>Maps</mods:genre>
+  <mods:physicalDescription>
+    <mods:form authority="marccategory">map</mods:form>
+    <mods:form type="technique">Etched or engraved</mods:form>
+    <mods:extent>21.4 x 17.3 cm.</mods:extent>
+    <mods:note>Color: Bitonal</mods:note>
+  </mods:physicalDescription>
+  <mods:physicalDescription>
+    <mods:form authority="marccategory">electronic resource</mods:form>
+    <mods:internetMediaType>image/jp2</mods:internetMediaType>
+  </mods:physicalDescription>
+  <mods:language>
+    <mods:languageTerm type="text">French</mods:languageTerm>
+  </mods:language>
+  <mods:relatedItem type="host" displayLabel="Source" xlink:href="912B41P.xml" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <mods:titleInfo>
+      <mods:title>Petit atlas; v. 3; plate 70.</mods:title>
+    </mods:titleInfo>
+    <mods:location>
+      <mods:physicalLocation>University of Illinois at Urbana-Champaign</mods:physicalLocation>
+      <mods:physicalLocation authority="oclcorg">UIU</mods:physicalLocation>
+      <mods:physicalLocation authority="marcorg">IU</mods:physicalLocation>
+      <mods:holdingSimple>
+        <mods:copyInformation>
+          <mods:subLocation>ihlc</mods:subLocation>
+        </mods:copyInformation>
+      </mods:holdingSimple>
+    </mods:location>
+  </mods:relatedItem>
+  <mods:relatedItem type="host" displayLabel="ContentDM Collection">
+    <mods:titleInfo>
+      <mods:title>Maps of Africa to 1900</mods:title>
+    </mods:titleInfo>
+  </mods:relatedItem>
+  <mods:location>
+    <mods:url access="raw object">http://africanmapimages.grainger.illinois.edu/afm0000092.jp2</mods:url>
+  </mods:location>
+  <mods:location>
+    <mods:url access="object in context" usage="primary">https://imagesearch.library.illinois.edu/u?/africanmaps,0</mods:url>
+  </mods:location>
+  <mods:classification authority="ddc">Q_912B41P</mods:classification>
+  <mods:identifier type="map_no_in_basset_bibliography">92</mods:identifier>
+  <mods:identifier type="file_name">afm0000092.jp2</mods:identifier>
+  <mods:identifier type="contentdm_number">0</mods:identifier>
+  <mods:identifier type="contentdm_file_name">1.jpg</mods:identifier>
+  <mods:identifier type="contentdm_file_path">/africanmaps/image/1.jpg</mods:identifier>
+  <mods:recordInfo>
+    <mods:recordContentSource>University of Illinois at Urbana-Champaign</mods:recordContentSource>
+    <mods:recordContentSource authority="oclcorg">UIU</mods:recordContentSource>
+    <mods:recordContentSource authority="marcorg">IU</mods:recordContentSource>
+    <mods:recordOrigin>XSLT was used to convert the original contentdm_record.xml file exported from ContentDM.</mods:recordOrigin>
+    <mods:recordCreationDate encoding="w3cdtf">2011-04-01T10:48:33</mods:recordCreationDate>
+  </mods:recordInfo>
+</mods:mods>
