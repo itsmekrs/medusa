@@ -49,7 +49,7 @@ module Medusa
                 xml.messageDigest
               }
               xml.size
-              xml.format {
+              xml.format_ {
                 xml.formatDesignation {
                   xml.formatName
                   xml.formatVersion

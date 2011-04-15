@@ -1,5 +1,5 @@
 module Medusa
-  class ContentdmRecord < ActiveFedora::NokogiriDatastream
+  class ContentDmRecord < ActiveFedora::NokogiriDatastream
 
     set_terminology do |t|
       t.root(:path => "record") {
