@@ -3,8 +3,6 @@ require 'hydra'
 
 class BasicCollection < ActiveFedora::Base
 
-  has_relationship "has_collection_member", :has_collection_member, :inbound => true, :type => ActiveFedora::Base
-
   # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
   has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata
 
@@ -16,4 +14,11 @@ class BasicCollection < ActiveFedora::Base
   has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
     #m.field 'description', :string
   end
+
+  def initialize( attrs={} )
+    super(attrs)
+    add_relationship(:has_model, "hydra-cModel:commonMetadata")
+    add_relationship(:has_collection_member, ActiveFedora::Base)
+  end
+
 end

@@ -34,6 +34,8 @@ class Medusa::Ingester
       root_metadata_filename                        = collection.datastreams['preservationMetadata'].root_metadata_filename
       mods_xml                                      = package_file_xml('collection', root_metadata_filename)
       collection.datastreams['descMetadata'].ng_xml = mods_xml
+      #look in the primis file for rights data
+      #todo
       collection.save
       collection
     end
@@ -66,8 +68,11 @@ class Medusa::Ingester
   #If there is an object with the given pid delete it and yield to the block.
   #For making this repeatable without hassle.
   def replacing_object(pid)
-    if object = ActiveFedora::Base.find(pid)
+    begin
+      object = ActiveFedora::Base.find(pid)
       object.delete
+    rescue ActiveFedora::ObjectNotFoundError
+      #nothing
     end
     yield
   end

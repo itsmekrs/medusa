@@ -22,4 +22,12 @@ class BasicImage < ActiveFedora::Base
     m.field 'depositor', :string
     m.field 'title', :string
   end
+
+  def initialize( attrs={} )
+    super(attrs)
+    add_relationship(:has_model, "hydra-cModel:commonMetadata")
+    add_relationship(:has_model, "hydra-cModel:genericContent")
+    add_relationship(:has_model, "hydra-cModel:genericImage")
+    add_relationship(:member_of_collection, Medusa::BasicCollection)
+  end
 end
