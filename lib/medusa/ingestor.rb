@@ -1,4 +1,5 @@
 require 'medusa'
+require 'om'
 
 class Medusa::Ingester
   attr_accessor :package_dir
@@ -23,14 +24,16 @@ class Medusa::Ingester
 
   def create_collection
     premis_xml = package_file_xml('collection', 'premis.xml')
-    mods_xml   = package_file_xml('collection', 'mods.xml')
     handle     = get_handle(premis_xml)
     pid        = handle_to_pid(handle)
     replacing_object(pid) do
       #create collection, attach streams, return collection
       collection                                            = Medusa::BasicCollection.new(:pid => pid)
       collection.datastreams['preservationMetadata'].ng_xml = premis_xml
-      collection.datastreams['descMetadata'].ng_xml         = mods_xml
+      #open the premis and get the mods filename
+      root_metadata_filename                        = collection.datastreams['preservationMetadata'].root_metadata_filename
+      mods_xml                                      = package_file_xml('collection', root_metadata_filename)
+      collection.datastreams['descMetadata'].ng_xml = mods_xml
       collection.save
       collection
     end
