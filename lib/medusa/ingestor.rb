@@ -70,7 +70,7 @@ class Medusa::Ingester
   def replacing_object(pid)
     begin
       object = ActiveFedora::Base.find(pid)
-      object.delete
+      object.delete unless object.nil?
     rescue ActiveFedora::ObjectNotFoundError
       #nothing
     end
