@@ -28,7 +28,7 @@ module Medusa
       add_relationship(:has_model, "hydra-cModel:commonMetadata")
       add_relationship(:has_model, "hydra-cModel:genericContent")
       add_relationship(:has_model, "hydra-cModel:genericImage")
-      add_relationship(:member_of_collection, Medusa::BasicCollection)
+      #add_relationship(:isMemberOf, Medusa::BasicCollection)
     end
   end
 end

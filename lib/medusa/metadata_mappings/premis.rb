@@ -39,7 +39,17 @@ module Medusa
       xpath   = "/oxns:premis/oxns:object/oxns:relationship[oxns:relationshipType='METADATA'][oxns:relationshipSubType='HAS_ROOT']/oxns:relatedObjectIdentification[oxns:relatedObjectIdentifierType='FILENAME']/oxns:relatedObjectIdentifierValue"
       nodeset = self.find_by_terms(xpath)
       if nodeset.empty?
-        return "none"
+        return nil
+      else
+        return nodeset.first.text
+      end
+    end
+
+    def production_master_filename
+      xpath   = "/oxns:premis/oxns:object/oxns:relationship[oxns:relationshipType='BASIC_IMAGE_ASSET'][oxns:relationshipSubType='PRODUCTION_MASTER']/oxns:relatedObjectIdentification[oxns:relatedObjectIdentifierType='FILENAME']/oxns:relatedObjectIdentifierValue"
+      nodeset = self.find_by_terms(xpath)
+      if nodeset.empty?
+        return nil
       else
         return nodeset.first.text
       end

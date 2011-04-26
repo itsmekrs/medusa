@@ -1,29 +1,48 @@
-require 'medusa'
 require 'om'
 
 class Medusa::Ingester
-  attr_accessor :package_dir
+  attr_accessor :package_path
 
-  def initialize(package_dir)
-    self.package_dir = package_dir
+  def initialize(package_path)
+    self.package_path = package_path
   end
 
   def ingest
-    puts "Ingesting from #{self.package_dir}"
+    puts "Ingesting from #{package_path}"
     #Read collection information and create collection object via AF
     #collection includes premis and mods metadata and a collection_description.txt
     #Need to read the premis to get the id for the collection object
-    collection = self.create_collection
+    collection = create_collection('collection')
 
     #For each item read item information and create item object via AF
+    Dir.entries(package_path).each do |top_level_dir|
+      # we want all the directories except collection
+      top_level_path = File.join package_path, top_level_dir
+      next unless File.directory? top_level_path
+      next if top_level_dir == '.' or top_level_dir == '..' or top_level_dir == 'collection'
 
+      Dir.entries(top_level_path).each do |item_dir|
+        next if item_dir == '.' or item_dir == '..'
+        item_local_path = File.join top_level_dir, item_dir
+        begin
+          self.create_item(item_local_path)
+        rescue Exception => e
+          puts "[ERROR]: cannot ingest package from #{item_local_path}: #{e.message}"
+        end
+      end
+
+    end
 
     #Output collection/item PIDS etc. for reference
     puts collection.pid
   end
 
-  def create_collection
-    premis_xml = package_file_xml('collection', 'premis.xml')
+  # Creates a new collection in Fedora
+  #
+  # @param [String] collection_path the LOCAL path of the collection directory  from package_path
+  # @return [Medusa::BasicCollection] the collection object
+  def create_collection(collection_path)
+    premis_xml = package_file_xml(collection_path, 'premis.xml')
     handle     = get_handle(premis_xml)
     pid        = handle_to_pid(handle)
     replacing_object(pid) do
@@ -34,17 +53,54 @@ class Medusa::Ingester
       root_metadata_filename                        = collection.datastreams['preservationMetadata'].root_metadata_filename
       mods_xml                                      = package_file_xml('collection', root_metadata_filename)
       collection.datastreams['descMetadata'].ng_xml = mods_xml
+      title = collection.datastreams['descMetadata'].term_values(:title_info)
+      collection.label = title
       #look in the primis file for rights data
-      #todo
+
+
       collection.save
       collection
+    end
+  end
+
+  # Creates a new item in Fedora
+  #
+  # @param [String] item_path the LOCAL path of the item directory  from package_path
+  # @return [Medusa::BasicImage] the item object
+  def create_item(item_path)
+
+    premis_xml = package_file_xml(item_path, 'premis.xml')
+    handle     = get_handle(premis_xml)
+    pid        = handle_to_pid(handle)
+    replacing_object(pid) do
+      #create collection, attach streams, return collection
+      item                                            = Medusa::BasicImage.new(:pid => pid)
+      item.datastreams['preservationMetadata'].ng_xml = premis_xml
+      item.datastreams['preservationMetadata'].label = "PREMIS"
+      #open the premis and get the mods filename
+      root_metadata_filename                  = item.datastreams['preservationMetadata'].root_metadata_filename
+      mods_xml                                = package_file_xml(item_path, root_metadata_filename)
+      item.datastreams['descMetadata'].ng_xml = mods_xml
+      item.datastreams['descMetadata'].label = "MODS"
+      title = item.datastreams['descMetadata'].term_values(:title_info)
+      item.label = title
+      #rigths metadata
+
+      #content
+      pm_filename = item.datastreams['preservationMetadata'].production_master_filename
+      pm_path = package_file(item_path, pm_filename)
+      pm_ds = ActiveFedora::Datastream.new(:dsId => "PRODUCTION_MASTER", :dsLabel => pm_filename, :controlGroup => "M", :blob => File.open(pm_path))
+      item.add_datastream pm_ds
+
+      item.save
+      item
     end
   end
 
   protected
 
   def package_file(*args)
-    File.join(package_dir, *args)
+    File.join(package_path, *args)
   end
 
   def package_file_contents(*args)
