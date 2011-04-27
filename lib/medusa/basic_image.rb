@@ -10,10 +10,6 @@ module Medusa
 
     has_metadata :name => "descMetadata", :type => Hydra::ModsImage
 
-    has_metadata :name => "sourceMetadata", :type => ActiveFedora::MetadataDatastream
-
-    has_metadata :name => 'catalogMetadata', :type => ActiveFedora::MetadataDatastream
-
     has_metadata :name => 'preservationMetadata', :type => Medusa::Premis
 
     # A place to put extra metadata values

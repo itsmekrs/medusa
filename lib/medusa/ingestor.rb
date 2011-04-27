@@ -50,7 +50,7 @@ class Medusa::Ingester
       collection                                            = Medusa::BasicCollection.new(:pid => pid)
       collection.datastreams['preservationMetadata'].ng_xml = premis_xml
       #open the premis and get the mods filename
-      root_metadata_filename                        = collection.datastreams['preservationMetadata'].root_metadata_filename
+      root_metadata_filename                        = collection.datastreams['preservationMetadata'].root_metadata_file
       mods_xml                                      = package_file_xml('collection', root_metadata_filename)
       collection.datastreams['descMetadata'].ng_xml = mods_xml
       title = collection.datastreams['descMetadata'].term_values(:title_info)
@@ -75,19 +75,29 @@ class Medusa::Ingester
     replacing_object(pid) do
       #create collection, attach streams, return collection
       item                                            = Medusa::BasicImage.new(:pid => pid)
-      item.datastreams['preservationMetadata'].ng_xml = premis_xml
-      item.datastreams['preservationMetadata'].label = "PREMIS"
+      premis_ds = item.datastreams['preservationMetadata']
+      premis_ds.ng_xml = premis_xml
+      premis_ds.label = "PREMIS"
       #open the premis and get the mods filename
-      root_metadata_filename                  = item.datastreams['preservationMetadata'].root_metadata_filename
+      root_metadata_filename                  = premis_ds.root_metadata_file
       mods_xml                                = package_file_xml(item_path, root_metadata_filename)
-      item.datastreams['descMetadata'].ng_xml = mods_xml
-      item.datastreams['descMetadata'].label = "MODS"
-      title = item.datastreams['descMetadata'].term_values(:title_info)
+      mods_ds = item.datastreams['descMetadata']
+      mods_ds.ng_xml = mods_xml
+      mods_ds.label = "MODS"
+      title = mods_ds.term_values(:title_info)
       item.label = title
+      #derivation files
+      premis_ds.derivation_source_file_array.each_with_index do |deriv_file, i|
+        ds_id = "DERIVATION#{i}"
+        ds_path = package_file(item_path, deriv_file)
+        deriv_ds = ActiveFedora::Datastream.new(:dsId => ds_id, :dsLabel => deriv_file, :controlGroup => "M", :blob => File.open(ds_path))
+        item.add_datastream deriv_ds
+      end
+
       #rigths metadata
 
       #content
-      pm_filename = item.datastreams['preservationMetadata'].production_master_filename
+      pm_filename = item.datastreams['preservationMetadata'].production_master_file
       pm_path = package_file(item_path, pm_filename)
       pm_ds = ActiveFedora::Datastream.new(:dsId => "PRODUCTION_MASTER", :dsLabel => pm_filename, :controlGroup => "M", :blob => File.open(pm_path))
       item.add_datastream pm_ds
