@@ -1,0 +1,124 @@
+﻿<premis xsi:schemaLocation="info:lc/xmlns/premis-v2 http://www.loc.gov/standards/premis/v2/premis-v2-1.xsd" version="2.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="info:lc/xmlns/premis-v2">
+  <object xsi:type="representation" version="2.1">
+    <objectIdentifier>
+      <objectIdentifierType>LOCAL</objectIdentifierType>
+      <objectIdentifierValue>MEDUSA:f7236f68-5c00-4837-a7a0-af387823de45-4</objectIdentifierValue>
+    </objectIdentifier>
+    <objectIdentifier>
+      <objectIdentifierType>URL</objectIdentifierType>
+      <objectIdentifierValue>https://imagesearch.library.illinois.edu/cdm4/browse.php?CISOROOT=%2Fafricanmaps</objectIdentifierValue>
+    </objectIdentifier>
+    <relationship>
+      <relationshipType>METADATA</relationshipType>
+      <relationshipSubType>HAS_ROOT</relationshipSubType>
+      <relatedObjectIdentification>
+        <relatedObjectIdentifierType>FILENAME</relatedObjectIdentifierType>
+        <relatedObjectIdentifierValue>mods.xml</relatedObjectIdentifierValue>
+      </relatedObjectIdentification>
+    </relationship>
+    <linkingEventIdentifier>
+      <linkingEventIdentifierType>LOCAL</linkingEventIdentifierType>
+      <linkingEventIdentifierValue>MEDUSA:f7236f68-5c00-4837-a7a0-af387823de45-4.0</linkingEventIdentifierValue>
+    </linkingEventIdentifier>
+    <linkingRightsStatementIdentifier>
+      <linkingRightsStatementIdentifierType>LOCAL</linkingRightsStatementIdentifierType>
+      <linkingRightsStatementIdentifierValue>MEDUSA:f7236f68-5c00-4837-a7a0-af387823de45-4.2</linkingRightsStatementIdentifierValue>
+    </linkingRightsStatementIdentifier>
+  </object>
+  <object xsi:type="file" version="2.1">
+    <objectIdentifier>
+      <objectIdentifierType>FILENAME</objectIdentifierType>
+      <objectIdentifierValue>mods.xml</objectIdentifierValue>
+    </objectIdentifier>
+    <objectCharacteristics>
+      <compositionLevel>0</compositionLevel>
+      <format>
+        <formatDesignation>
+          <formatName>text/xml</formatName>
+        </formatDesignation>
+      </format>
+    </objectCharacteristics>
+    <linkingEventIdentifier>
+      <linkingEventIdentifierType>LOCAL</linkingEventIdentifierType>
+      <linkingEventIdentifierValue>MEDUSA:f7236f68-5c00-4837-a7a0-af387823de45-4.1</linkingEventIdentifierValue>
+    </linkingEventIdentifier>
+  </object>
+  <event version="2.1">
+    <eventIdentifier>
+      <eventIdentifierType>LOCAL</eventIdentifierType>
+      <eventIdentifierValue>MEDUSA:f7236f68-5c00-4837-a7a0-af387823de45-4.0</eventIdentifierValue>
+    </eventIdentifier>
+    <eventType>CREATION</eventType>
+    <eventDateTime>2011-05-03T10:15:25</eventDateTime>
+    <eventDetail>SIP created from a ContentDM export record.</eventDetail>
+    <linkingAgentIdentifier>
+      <linkingAgentIdentifierType>UIUC_NETID</linkingAgentIdentifierType>
+      <linkingAgentIdentifierValue>UIUC\thabing</linkingAgentIdentifierValue>
+    </linkingAgentIdentifier>
+    <linkingObjectIdentifier>
+      <linkingObjectIdentifierType>LOCAL</linkingObjectIdentifierType>
+      <linkingObjectIdentifierValue>MEDUSA:f7236f68-5c00-4837-a7a0-af387823de45-4</linkingObjectIdentifierValue>
+    </linkingObjectIdentifier>
+  </event>
+  <event version="2.1">
+    <eventIdentifier>
+      <eventIdentifierType>LOCAL</eventIdentifierType>
+      <eventIdentifierValue>MEDUSA:f7236f68-5c00-4837-a7a0-af387823de45-4.1</eventIdentifierValue>
+    </eventIdentifier>
+    <eventType>CREATION</eventType>
+    <eventDateTime>2011-05-03T10:15:25</eventDateTime>
+    <eventDetail>The mods.xml was derived from ContentDM collection data.  It is expected to be manually edited to add data.</eventDetail>
+    <linkingAgentIdentifier>
+      <linkingAgentIdentifierType>UIUC_NETID</linkingAgentIdentifierType>
+      <linkingAgentIdentifierValue>UIUC\thabing</linkingAgentIdentifierValue>
+    </linkingAgentIdentifier>
+    <linkingObjectIdentifier>
+      <linkingObjectIdentifierType>FILENAME</linkingObjectIdentifierType>
+      <linkingObjectIdentifierValue>mods.xml</linkingObjectIdentifierValue>
+    </linkingObjectIdentifier>
+  </event>
+  <agent version="2.1">
+    <agentIdentifier>
+      <agentIdentifierType>UIUC_NETID</agentIdentifierType>
+      <agentIdentifierValue>UIUC\thabing</agentIdentifierValue>
+    </agentIdentifier>
+    <agentIdentifier>
+      <agentIdentifierType>EMAIL</agentIdentifierType>
+      <agentIdentifierValue>thabing@illinois.edu</agentIdentifierValue>
+    </agentIdentifier>
+    <agentName>Thomas Gerald Habing</agentName>
+    <agentType>PERSON</agentType>
+    <agentNote>Mgr, Software Development, Library</agentNote>
+    <linkingEventIdentifier>
+      <linkingEventIdentifierType>LOCAL</linkingEventIdentifierType>
+      <linkingEventIdentifierValue>MEDUSA:f7236f68-5c00-4837-a7a0-af387823de45-4.0</linkingEventIdentifierValue>
+    </linkingEventIdentifier>
+    <linkingEventIdentifier>
+      <linkingEventIdentifierType>LOCAL</linkingEventIdentifierType>
+      <linkingEventIdentifierValue>MEDUSA:f7236f68-5c00-4837-a7a0-af387823de45-4.1</linkingEventIdentifierValue>
+    </linkingEventIdentifier>
+  </agent>
+  <rights version="2.1">
+    <rightsStatement>
+      <rightsStatementIdentifier>
+        <rightsStatementIdentifierType>LOCAL</rightsStatementIdentifierType>
+        <rightsStatementIdentifierValue>MEDUSA:f7236f68-5c00-4837-a7a0-af387823de45-4.2</rightsStatementIdentifierValue>
+      </rightsStatementIdentifier>
+      <rightsBasis>COPYRIGHT</rightsBasis>
+      <copyrightInformation>
+        <copyrightStatus>PUBLIC_DOMAIN</copyrightStatus>
+        <copyrightJurisdiction>United States</copyrightJurisdiction>
+      </copyrightInformation>
+      <rightsGranted>
+        <act>DISSEMINATE</act>
+        <termOfGrant>
+          <startDate>2011-05-03T10:15:25</startDate>
+        </termOfGrant>
+      </rightsGranted>
+      <linkingObjectIdentifier>
+        <linkingObjectIdentifierType>LOCAL</linkingObjectIdentifierType>
+        <linkingObjectIdentifierValue>MEDUSA:f7236f68-5c00-4837-a7a0-af387823de45-4</linkingObjectIdentifierValue>
+      </linkingObjectIdentifier>
+    </rightsStatement>
+  </rights>
+</premis>

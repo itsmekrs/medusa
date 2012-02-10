@@ -1,0 +1,94 @@
+﻿<mods:mods version="3.4" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/mods.xsd" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <mods:typeOfResource>cartographic</mods:typeOfResource>
+  <mods:titleInfo>
+    <mods:title>Afrique</mods:title>
+  </mods:titleInfo>
+  <mods:name>
+    <mods:displayForm>Maire, A. P.</mods:displayForm>
+    <mods:role>
+      <mods:roleTerm authority="marcrelator" type="text">Creator</mods:roleTerm>
+      <mods:roleTerm authority="marcrelator" type="code">cre</mods:roleTerm>
+    </mods:role>
+  </mods:name>
+  <mods:originInfo>
+    <mods:place>
+      <mods:placeTerm></mods:placeTerm>
+    </mods:place>
+    <mods:dateCreated>1821</mods:dateCreated>
+  </mods:originInfo>
+  <mods:subject>
+    <mods:geographic>Africa (Continent)</mods:geographic>
+  </mods:subject>
+  <mods:subject authority="lcsh">
+    <mods:topic>Africa--Administrative and political divisions</mods:topic>
+  </mods:subject>
+  <mods:subject>
+    <mods:topic>Indigenous peoples</mods:topic>
+  </mods:subject>
+  <mods:subject>
+    <mods:topic>Borders</mods:topic>
+  </mods:subject>
+  <mods:subject>
+    <mods:topic>Political maps</mods:topic>
+  </mods:subject>
+  <mods:subject>
+    <mods:topic>Rivers</mods:topic>
+  </mods:subject>
+  <mods:subject>
+    <mods:cartographics>
+      <mods:scale>1:95,000,000.</mods:scale>
+    </mods:cartographics>
+  </mods:subject>
+  <mods:genre>Maps</mods:genre>
+  <mods:physicalDescription>
+    <mods:form authority="marccategory">map</mods:form>
+    <mods:form type="technique">Etched or engraved</mods:form>
+    <mods:extent>9.5 x 9.5 cm.</mods:extent>
+    <mods:note>Color: Hand colored</mods:note>
+    <mods:form authority="marccategory">electronic resource</mods:form>
+    <mods:internetMediaType>image/jp2</mods:internetMediaType>
+  </mods:physicalDescription>
+  <mods:language>
+    <mods:languageTerm type="text">French</mods:languageTerm>
+  </mods:language>
+  <mods:relatedItem type="host" displayLabel="Source" xlink:href="G8300182-.M3.xml" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <mods:titleInfo>
+      <mods:title>Loose sheet</mods:title>
+    </mods:titleInfo>
+    <mods:location>
+      <mods:physicalLocation>University of Illinois at Urbana-Champaign</mods:physicalLocation>
+      <mods:physicalLocation authority="oclcorg">UIU</mods:physicalLocation>
+      <mods:physicalLocation authority="marcorg">IU</mods:physicalLocation>
+      <mods:holdingSimple>
+        <mods:copyInformation>
+          <mods:subLocation>max</mods:subLocation>
+          <mods:shelfLocator>G8300182-_M3</mods:shelfLocator>
+        </mods:copyInformation>
+      </mods:holdingSimple>
+    </mods:location>
+  </mods:relatedItem>
+  <mods:relatedItem type="host" displayLabel="ContentDM Collection">
+    <mods:titleInfo>
+      <mods:title>Maps of Africa to 1900</mods:title>
+    </mods:titleInfo>
+  </mods:relatedItem>
+  <mods:location>
+    <mods:url access="raw object">http://africanmapimages.grainger.illinois.edu/afm0000158.jp2</mods:url>
+  </mods:location>
+  <mods:location>
+    <mods:url access="object in context" usage="primary">https://imagesearch.library.illinois.edu/u?/africanmaps,1</mods:url>
+  </mods:location>
+  <mods:classification authority="lcc">G8300182-_M3</mods:classification>
+  <mods:identifier type="map_no_in_basset_bibliography">158</mods:identifier>
+  <mods:identifier type="file_name">afm0000158.jp2</mods:identifier>
+  <mods:identifier type="contentdm_number">1</mods:identifier>
+  <mods:identifier type="contentdm_file_name">10.jpg</mods:identifier>
+  <mods:identifier type="contentdm_file_path">/africanmaps/image/10.jpg</mods:identifier>
+  <mods:recordInfo>
+    <mods:recordContentSource>University of Illinois at Urbana-Champaign</mods:recordContentSource>
+    <mods:recordContentSource authority="oclcorg">UIU</mods:recordContentSource>
+    <mods:recordContentSource authority="marcorg">IU</mods:recordContentSource>
+    <mods:recordOrigin>XSLT was used to convert the original contentdm_record.xml file exported from ContentDM.</mods:recordOrigin>
+    <mods:recordCreationDate encoding="w3cdtf">2011-05-03T10:15:32</mods:recordCreationDate>
+  </mods:recordInfo>
+</mods:mods>

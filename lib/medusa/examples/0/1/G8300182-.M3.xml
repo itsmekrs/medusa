@@ -1,0 +1,88 @@
+<record xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd" xmlns="http://www.loc.gov/MARC21/slim" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<leader>01289cem  2200325Ia 4500</leader>
+	<controlfield tag="001">4560133</controlfield>
+	<controlfield tag="005">20100719152815.0</controlfield>
+	<controlfield tag="006">m        z f      </controlfield>
+	<controlfield tag="007">aj canzn</controlfield>
+	<controlfield tag="008">030307s1905    dcua      b  f  0   eng d</controlfield>
+	<datafield tag="035" ind1=" " ind2=" ">
+		<subfield code="a">(OCoLC)ocm51813542</subfield>
+	</datafield>
+	<datafield tag="040" ind1=" " ind2=" ">
+		<subfield code="a">UIU</subfield>
+		<subfield code="c">UIU</subfield>
+	</datafield>
+	<datafield tag="034" ind1="1" ind2=" ">
+		<subfield code="a">a</subfield>
+		<subfield code="b">62500</subfield>
+		<subfield code="d">W0894500</subfield>
+		<subfield code="e">W0893000</subfield>
+		<subfield code="f">N0404500</subfield>
+		<subfield code="g">N0403000</subfield>
+	</datafield>
+	<datafield tag="043" ind1=" " ind2=" ">
+		<subfield code="a">n-us-il</subfield>
+	</datafield>
+	<datafield tag="052" ind1=" " ind2=" ">
+		<subfield code="a">4101</subfield>
+	</datafield>
+	<datafield tag="049" ind1=" " ind2=" ">
+		<subfield code="a">UIUU</subfield>
+		<subfield code="m">no</subfield>
+		<subfield code="r">rep</subfield>
+	</datafield>
+	<datafield tag="110" ind1="2" ind2=" ">
+		<subfield code="a">Geological Survey (U.S.)</subfield>
+	</datafield>
+	<datafield tag="245" ind1="1" ind2="0">
+		<subfield code="a">Illinois, Peoria quadrangle :</subfield>
+		<subfield code="b">topography /</subfield>
+		<subfield code="c">Jno. H. Renshawe and H.M. Wilson, geographers ; Chas. E. Cooke, in charge of section ; topography by Chas. E. Cooke, Asst. J.N. Williamson ; control by J.R. Ellis ; engraved Mar. 1905 by U.S.G.S.</subfield>
+	</datafield>
+	<datafield tag="246" ind1="3" ind2=" ">
+		<subfield code="a">Peoria quadrangle, Illinois</subfield>
+	</datafield>
+	<datafield tag="250" ind1=" " ind2=" ">
+		<subfield code="a">Ed. of April 1905.</subfield>
+	</datafield>
+	<datafield tag="255" ind1=" " ind2=" ">
+		<subfield code="a">Scale 1:62,500 ;</subfield>
+		<subfield code="c">(W 89⁰45ʹ00ʺ--W 89⁰30ʹ00ʺ/N 40⁰45ʹ00ʺ--N 40⁰30ʹ00ʺ).</subfield>
+	</datafield>
+	<datafield tag="260" ind1=" " ind2=" ">
+		<subfield code="a">[Washington, D.C.] :</subfield>
+		<subfield code="b">U.S. Geological Survey,</subfield>
+		<subfield code="c">1905.</subfield>
+	</datafield>
+	<datafield tag="300" ind1=" " ind2=" ">
+		<subfield code="a">1 map :</subfield>
+		<subfield code="b">col. ;</subfield>
+		<subfield code="c">45 x 34 cm.</subfield>
+	</datafield>
+	<datafield tag="500" ind1=" " ind2=" ">
+		<subfield code="a">Relief indicated by contours.</subfield>
+	</datafield>
+	<datafield tag="500" ind1=" " ind2=" ">
+		<subfield code="a">"Surveyed in 1902-1904."</subfield>
+	</datafield>
+	<datafield tag="500" ind1=" " ind2=" ">
+		<subfield code="a">"Contour interval 10 feet."</subfield>
+	</datafield>
+	<datafield tag="651" ind1=" " ind2="0">
+		<subfield code="a">Peoria (Ill.)</subfield>
+		<subfield code="v">Maps, Topographic.</subfield>
+	</datafield>
+	<datafield tag="651" ind1=" " ind2="0">
+		<subfield code="a">Illinois</subfield>
+		<subfield code="v">Maps, Topographic.</subfield>
+	</datafield>
+	<datafield tag="856" ind1="4" ind2="1">
+		<subfield code="u">http://images.library.uiuc.edu:8081/u?/maps,2009</subfield>
+	</datafield>
+	<datafield tag="994" ind1=" " ind2=" ">
+		<subfield code="a">02</subfield>
+		<subfield code="b">UIU</subfield>
+	</datafield>
+</record>
+
+<!-- @attr 3=1 @attr 1=16 "G3700s.C2 1882 .U5 Peoria" -->
