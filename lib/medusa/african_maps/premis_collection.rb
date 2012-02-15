@@ -1,3 +1,7 @@
-class PremisCollection
-  # To change this template use File | Settings | File Templates.
+module Medusa
+  module AfricanMaps
+    class PremisCollection
+      attr_accessor :medusa_id, :premis_file, :mods_file
+    end
+  end
 end

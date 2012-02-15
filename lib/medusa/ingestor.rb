@@ -1,23 +1,19 @@
 require 'om'
+require 'lib/medusa/generic_ingestor'
 
-class Medusa::Ingester
-  attr_accessor :package_path
-
-  def initialize(package_path)
-    self.package_path = package_path
-  end
+class Medusa::Ingester < Medusa::GenericIngestor
 
   def ingest
-    puts "Ingesting from #{package_path}"
+    puts "Ingesting from #{package_root}"
     #Read collection information and create collection object via AF
     #collection includes premis and mods metadata and a collection_description.txt
     #Need to read the premis to get the id for the collection object
     collection = create_collection('collection')
 
     #For each item read item information and create item object via AF
-    Dir.entries(package_path).each do |top_level_dir|
+    Dir.entries(package_root).each do |top_level_dir|
       # we want all the directories except collection
-      top_level_path = File.join package_path, top_level_dir
+      top_level_path = File.join package_root, top_level_dir
       next unless File.directory? top_level_path
       next if top_level_dir == '.' or top_level_dir == '..' or top_level_dir == 'collection'
 
@@ -39,23 +35,23 @@ class Medusa::Ingester
 
   # Creates a new collection in Fedora
   #
-  # @param [String] collection_path the LOCAL path of the collection directory  from package_path
+  # @param [String] collection_path the LOCAL path of the collection directory  from package_root
   # @return [Medusa::BasicCollection] the collection object
   def create_collection(collection_path)
     premis_xml = package_file_xml(collection_path, 'premis.xml')
-    handle     = get_handle(premis_xml)
-    pid        = handle_to_pid(handle)
+    handle = get_handle(premis_xml)
+    pid = handle_to_pid(handle)
     replacing_object(pid) do
       #create collection, attach streams, return collection
-      collection                                            = Medusa::BasicCollection.new(:pid => pid)
+      collection = Medusa::BasicCollection.new(:pid => pid)
       collection.datastreams['preservationMetadata'].ng_xml = premis_xml
       #open the premis and get the mods filename
-      root_metadata_filename                        = collection.datastreams['preservationMetadata'].root_metadata_file
-      mods_xml                                      = package_file_xml('collection', root_metadata_filename)
+      root_metadata_filename = collection.datastreams['preservationMetadata'].root_metadata_file
+      mods_xml = package_file_xml('collection', root_metadata_filename)
       collection.datastreams['descMetadata'].ng_xml = mods_xml
       title = collection.datastreams['descMetadata'].term_values(:title_info)
       collection.label = title
-      #look in the primis file for rights data
+      #look in the premis file for rights data
 
 
       collection.save
@@ -65,22 +61,22 @@ class Medusa::Ingester
 
   # Creates a new item in Fedora
   #
-  # @param [String] item_path the LOCAL path of the item directory  from package_path
+  # @param [String] item_path the LOCAL path of the item directory  from package_root
   # @return [Medusa::BasicImage] the item object
   def create_item(item_path)
 
     premis_xml = package_file_xml(item_path, 'premis.xml')
-    handle     = get_handle(premis_xml)
-    pid        = handle_to_pid(handle)
+    handle = get_handle(premis_xml)
+    pid = handle_to_pid(handle)
     replacing_object(pid) do
       #create collection, attach streams, return collection
-      item                                            = Medusa::BasicImage.new(:pid => pid)
+      item = Medusa::BasicImage.new(:pid => pid)
       premis_ds = item.datastreams['preservationMetadata']
       premis_ds.ng_xml = premis_xml
       premis_ds.label = "PREMIS"
       #open the premis and get the mods filename
-      root_metadata_filename                  = premis_ds.root_metadata_file
-      mods_xml                                = package_file_xml(item_path, root_metadata_filename)
+      root_metadata_filename = premis_ds.root_metadata_file
+      mods_xml = package_file_xml(item_path, root_metadata_filename)
       mods_ds = item.datastreams['descMetadata']
       mods_ds.ng_xml = mods_xml
       mods_ds.label = "MODS"
@@ -110,7 +106,7 @@ class Medusa::Ingester
   protected
 
   def package_file(*args)
-    File.join(package_path, *args)
+    File.join(package_root, *args)
   end
 
   def package_file_contents(*args)
@@ -123,24 +119,12 @@ class Medusa::Ingester
 
   def get_handle(premis_xml)
     ids = premis_xml.css("premis > object > objectIdentifier")
-    id  = ids.detect { |id| id.css('objectIdentifierType').text == 'HANDLE' }
+    id = ids.detect { |id| id.css('objectIdentifierType').text == 'HANDLE' }
     id.css('objectIdentifierValue').text
   end
 
   def handle_to_pid(handle)
     handle.gsub(/^(.*?)\//, '')
-  end
-
-  #If there is an object with the given pid delete it and yield to the block.
-  #For making this repeatable without hassle.
-  def replacing_object(pid)
-    begin
-      object = ActiveFedora::Base.find(pid)
-      object.delete unless object.nil?
-    rescue ActiveFedora::ObjectNotFoundError
-      #nothing
-    end
-    yield
   end
 
 end
