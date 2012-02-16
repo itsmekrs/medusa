@@ -4,7 +4,7 @@
 #based at package_path
 require 'active_fedora'
 
-class Medusa
+module Medusa
   class GenericIngestor
 
     attr_accessor :package_root
