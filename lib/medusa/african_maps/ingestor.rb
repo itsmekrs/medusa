@@ -16,9 +16,10 @@ module Medusa
         fedora_collection = nil
         replacing_object(collection.medusa_id) do
           fedora_collection = ActiveFedora::Base.new(:pid => collection.medusa_id)
-          premis_ds = ActiveFedora::Datastream.new(:dsid => 'PREMIS', :dsId => 'PREMIS', :dsLabel => 'PREMIS',
+          premis_ds = ActiveFedora::Datastream.new(:dsLabel => 'PREMIS',
                                                    :controlGroup => "X",
                                                    :blob => File.open(collection.premis_file))
+          premis_ds.dsid = 'PREMIS'
           fedora_collection.add_datastream(premis_ds)
           fedora_collection.save
         end
