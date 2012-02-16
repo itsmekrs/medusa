@@ -15,7 +15,7 @@ module Medusa
         collection = PremisCollectionParser.new(File.join(self.package_root, 'collection', 'premis.xml')).parse
         puts "INGESTING COLLECTION: #{collection.medusa_id}"
         fedora_collection = nil
-        replacing_object(collection.medusa_id) do
+        replacing_object(collection.medusa_id, Medusa::AfricanMaps::Object) do
           fedora_collection = Medusa::AfricanMaps::Object.new(:pid => collection.medusa_id)
           #premis_ds = ActiveFedora::Datastream.new(:dsLabel => 'PREMIS',
           #                                         :controlGroup => "X",
