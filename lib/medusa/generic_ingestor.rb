@@ -11,13 +11,14 @@ module Medusa
 
     def initialize(package_root)
       self.package_root = package_root
+      ActiveFedora.init
     end
 
     #If there is an object with the given pid delete it and yield to the block.
     #For making this repeatable without hassle.
     def replacing_object(pid)
       begin
-        object = ActiveFedora::Base.find(pid)
+        object = ActiveFedora::Base.load_instance(pid)
         object.delete unless object.nil?
       rescue ActiveFedora::ObjectNotFoundError
         #nothing
