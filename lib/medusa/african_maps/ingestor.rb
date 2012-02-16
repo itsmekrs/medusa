@@ -1,6 +1,7 @@
 require 'lib/medusa/african_maps/premis_collection_parser'
 require 'lib/medusa/african_maps/premis_item_parser'
 require 'lib/medusa/generic_ingestor'
+require 'lib/medusa/african_maps/object'
 require 'active_fedora'
 
 module Medusa
@@ -15,7 +16,7 @@ module Medusa
         puts "INGESTING COLLECTION: #{collection.medusa_id}"
         fedora_collection = nil
         replacing_object(collection.medusa_id) do
-          fedora_collection = ActiveFedora::Base.new(:pid => collection.medusa_id)
+          fedora_collection = Medusa::AfricanMaps::Object.new(:pid => collection.medusa_id)
           premis_ds = ActiveFedora::Datastream.new(:dsLabel => 'PREMIS',
                                                    :controlGroup => "X",
                                                    :blob => File.open(collection.premis_file))
